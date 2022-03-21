@@ -1,0 +1,6 @@
+cleaning: rm -rf .git* LICENSE Makefile exports README.yaml test
+add customer, project, globalenv, tfrun and type
+remove tenant, namespace and stage
+force usage of lowercase for all tags
+in tag force Name with a upper case
+allow to remove tag Name in tags

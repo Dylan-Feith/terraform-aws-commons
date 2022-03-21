@@ -1,0 +1,12 @@
+cleaning: rm -rf .git* .editorconfig .pre-commit-config.yaml .releaserc.json CHANGELOG.md  LICENSE UPGRADE-5.0.md
+change enable_cross_zone_load_balancing default to true
+change listener_ssl_policy_default to ELBSecurityPolicy-TLS-1-2-2017-01 (instead of ELBSecurityPolicy-2016-08): remove TLSv1, keep v1.1 and v1.2
+
+new features: 
+  1. can create only listener rule, ... to a lb created outside this module by using "lb_arn" variable
+  2. can create a http/https listener rule to a lb listener created outside this module by using "listener_arn"
+  3. can create a listener rule of type "forward" to a target group defined outside this module by using "target_group_arn"
+
+#TODO
+cw alarms
+

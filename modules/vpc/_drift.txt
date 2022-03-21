@@ -1,0 +1,4 @@
+cleaning: rm -rf .git* .editorconfig .pre-commit-config.yaml .releaserc.json CHANGELOG.md  LICENSE modules UPGRADE-3.0.md
+security: map_public_ip_on_launch default to false
+dns: enable hostnames
+nat instance: allow to setup in in subnet private and database

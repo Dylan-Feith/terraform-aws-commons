@@ -1,0 +1,1 @@
+cleaning: rm -rf .git* .editorconfig .pre-commit-config.yaml .releaserc.json CHANGELOG.md  LICENSE update_groups.sh modules

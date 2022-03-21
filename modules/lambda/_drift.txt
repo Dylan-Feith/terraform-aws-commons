@@ -1,0 +1,2 @@
+- rm -rf .editorconfig .git* .pre-commit-config.yaml .releaserc.json CHANGELOG.md LICENSE modules 
+- edit default variables
