@@ -1,4 +1,4 @@
-- cleaning: rm -rf .git* .editorconfig .pre-commit-config.yaml .releaserc.json CHANGELOG.md  LICENSE wrappers modules
+- cleaning: rm -rf .git* .editorconfig .pre-commit-config.yaml .releaserc.json CHANGELOG.md  LICENSE wrappers modules UPGRADE-3.0.md
 - edit version: v3.74.2
 - edit default variables to enforce security
 - add cloudtrail policy in elb log delivery

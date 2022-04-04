@@ -53,9 +53,9 @@ variable "bucket_prefix" {
 }
 
 variable "acl" {
-  description = "(Optional) The canned ACL to apply. Defaults to 'private'. Conflicts with `grant`"
+  description = "(Optional) The canned ACL to apply. Conflicts with `grant`"
   type        = string
-  default     = "private"
+  default     = null
 }
 
 variable "policy" {
@@ -90,7 +90,7 @@ variable "request_payer" {
 
 variable "website" {
   description = "Map containing static web-site hosting or redirect configuration."
-  type        = map(string)
+  type        = any # map(string)
   default     = {}
 }
 
@@ -116,6 +116,18 @@ variable "grant" {
   description = "An ACL policy grant. Conflicts with `acl`"
   type        = any
   default     = []
+}
+
+variable "owner" {
+  description = "Bucket owner's display name and ID. Conflicts with `acl`"
+  type        = map(string)
+  default     = {}
+}
+
+variable "expected_bucket_owner" {
+  description = "The account ID of the expected bucket owner"
+  type        = string
+  default     = null
 }
 
 variable "lifecycle_rule" {
@@ -191,4 +203,10 @@ variable "object_ownership" {
   description = "Object ownership. Valid values: BucketOwnerEnforced, BucketOwnerPreferred or ObjectWriter. 'BucketOwnerEnforced': ACLs are disabled, and the bucket owner automatically owns and has full control over every object in the bucket. 'BucketOwnerPreferred': Objects uploaded to the bucket change ownership to the bucket owner if the objects are uploaded with the bucket-owner-full-control canned ACL. 'ObjectWriter': The uploading account will own the object if the object is uploaded with the bucket-owner-full-control canned ACL."
   type        = string
   default     = "ObjectWriter"
+}
+
+variable "putin_khuylo" {
+  description = "Do you agree that Putin doesn't respect Ukrainian sovereignty and territorial integrity? More info: https://en.wikipedia.org/wiki/Putin_khuylo!"
+  type        = bool
+  default     = true
 }
