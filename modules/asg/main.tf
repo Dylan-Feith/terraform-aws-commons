@@ -53,13 +53,14 @@ resource "aws_launch_template" "this" {
         for_each = flatten([try(block_device_mappings.value.ebs, [])])
         content {
           delete_on_termination = try(ebs.value.delete_on_termination, null)
-          encrypted             = try(ebs.value.encrypted, null)
-          kms_key_id            = try(ebs.value.kms_key_id, null)
-          iops                  = try(ebs.value.iops, null)
-          throughput            = try(ebs.value.throughput, null)
-          snapshot_id           = try(ebs.value.snapshot_id, null)
-          volume_size           = try(ebs.value.volume_size, null)
-          volume_type           = try(ebs.value.volume_type, null)
+          # start edit #
+          encrypted   = try(ebs.value.encrypted, true)
+          kms_key_id  = try(ebs.value.kms_key_id, data.aws_kms_key.ebs.arn)
+          iops        = try(ebs.value.iops, null)
+          throughput  = try(ebs.value.throughput, null)
+          snapshot_id = try(ebs.value.snapshot_id, null)
+          volume_size = try(ebs.value.volume_size, null)
+          volume_type = try(ebs.value.volume_type, null)
         }
       }
     }
@@ -122,14 +123,19 @@ resource "aws_launch_template" "this" {
       configured = hibernation_options.value.configured
     }
   }
-
-  dynamic "iam_instance_profile" {
-    for_each = var.iam_instance_profile_name != null || var.iam_instance_profile_arn != null ? [1] : []
-    content {
-      name = var.iam_instance_profile_name
-      arn  = var.iam_instance_profile_arn
-    }
+  # start edit #
+  #dynamic "iam_instance_profile" {
+  #  for_each = var.iam_instance_profile_name != null || var.iam_instance_profile_arn != null ? [1] : []
+  #  content {
+  #    name = var.iam_instance_profile_name
+  #    arn  = var.iam_instance_profile_arn
+  #  }
+  #}
+  iam_instance_profile {
+    name = try(aws_iam_instance_profile.this[0].name, "")
+    arn  = try(aws_iam_instance_profile.this[0].arn, "")
   }
+  #  end edit  #
 
   dynamic "instance_market_options" {
     for_each = length(var.instance_market_options) > 0 ? [var.instance_market_options] : []

@@ -1,1 +1,4 @@
 - cleaning: rm -rf .git* .editorconfig .pre-commit-config.yaml .releaserc.json CHANGELOG.md  LICENSE wrappers modules UPGRADE-*.md
+- new file iam.tf: create instance profile, role and dynamically attach policies to the role
+- encrypt ebs by default
+- edit ebs_optimized default to true

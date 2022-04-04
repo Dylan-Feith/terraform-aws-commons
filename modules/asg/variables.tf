@@ -226,7 +226,10 @@ variable "warm_pool" {
 variable "ebs_optimized" {
   description = "If true, the launched EC2 instance will be EBS-optimized"
   type        = bool
-  default     = null
+  # start edit #
+  # default     = null
+  default = true
+  #  end edit  #
 }
 
 variable "iam_instance_profile_name" {
