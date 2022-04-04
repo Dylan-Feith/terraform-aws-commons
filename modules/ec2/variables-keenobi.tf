@@ -41,3 +41,26 @@ variable "additionnal_ebs_block_device" {
 #    kms_key_id = data.aws_kms_key.ebs.arn
 #  }
 #}
+
+## Cloudwatch
+variable "cw_disk_used_percent_alarms" {
+  description = "Enable this CW alarm"
+  type        = string
+  default     = true
+}
+variable "cw_disk_used_percent_threshold" {
+  description = "DU threshold above which to alarm"
+  type        = string
+  default     = 95
+}
+variable "cw_disk_used_percent_alarm" {
+  description = "A list of SNS topics"
+  type        = list(string)
+  default     = []
+}
+variable "cw_disk_used_percent_ok" {
+  default = []
+}
+variable "cw_disk_used_percent_treat_missing_data" {
+  default = null
+}

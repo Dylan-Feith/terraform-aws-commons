@@ -1,13 +1,27 @@
 # Variables
 data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}
+data "aws_default_tags" "current" {}
 locals {
   current_region     = data.aws_region.current.name
   current_account_id = data.aws_caller_identity.current.account_id
   current_profile    = var.globalenv == "prod" ? var.aws_prod_profile : var.aws_nonprod_profile
+  default_tags       = data.aws_default_tags.current.tags
+  default_tags_as_list_of_map = [for k, v in data.aws_default_tags.current.tags : {
+    key   = k
+    value = v
+    }
+  ]
+
 }
 output "region" {
   value = local.current_region
+}
+output "default_tags" {
+  value = local.default_tags
+}
+output "default_tags_as_list_of_map" {
+  value = local.default_tags_as_list_of_map
 }
 
 ###################
