@@ -1,3 +1,7 @@
+#TODO
+# https://github.com/terraform-aws-modules/terraform-aws-autoscaling
+# github community tag: v6.2.0
+
 # AWS Auto Scaling Group (ASG) Terraform module
 
 Terraform module which creates Auto Scaling resources on AWS.
