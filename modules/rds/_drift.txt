@@ -1,0 +1,2 @@
+- cleaning: rm -rf .git* .editorconfig .pre-commit-config.yaml .releaserc.json CHANGELOG.md  LICENSE UPGRADE-4.0.md
+- remove a big file in git : rm -f examples/s3-import-mysql/backup.zip
