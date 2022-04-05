@@ -144,7 +144,10 @@ resource "aws_vpc_peering_connection" "requester" {
   peer_region   = local.accepter_region
   auto_accept   = false
 
-  tags = module.requester.tags
+  # start edit #
+  # tags = module.requester.tags
+  tags = var.tags
+  #  end edit  #
 }
 
 # Options can't be set until the connection has been accepted and is active,
