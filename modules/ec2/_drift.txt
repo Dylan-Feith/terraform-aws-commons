@@ -4,6 +4,7 @@ new file iam.tf: create instance profile, role and dynamically attach policies t
 encrypt ebs by default
 edit ebs_optimized default to true
 do not use native ebs_block_device because it is only valid at launch time: use additionnal_ebs_block_device instead
+do not use volume_tags because it create a diff all the time with tag and force tag on root ebs volume
 
 #TODO cloudwatch alarms
 

@@ -57,7 +57,10 @@ resource "aws_instance" "this" {
       volume_size = lookup(root_block_device.value, "volume_size", null)
       volume_type = lookup(root_block_device.value, "volume_type", null)
       throughput  = lookup(root_block_device.value, "throughput", null)
-      tags        = lookup(root_block_device.value, "tags", null)
+      # start edit #
+      # tags = lookup(root_block_device.value, "tags", null)
+      tags = merge({ "Name" = var.name }, local.default_tags, lookup(root_block_device.value, "tags", null))
+      # end edit #
     }
   }
 

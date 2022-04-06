@@ -233,7 +233,10 @@ variable "volume_tags" {
 variable "enable_volume_tags" {
   description = "Whether to enable volume tags (if enabled it conflicts with root_block_device tags)"
   type        = bool
-  default     = true
+  # start edit #
+  #default     = true
+  default = false
+  # end edit #
 }
 
 variable "vpc_security_group_ids" {
