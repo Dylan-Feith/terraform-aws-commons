@@ -15,6 +15,7 @@ resource "aws_cloudwatch_metric_alarm" "ec2_disk" {
   tags                = var.tags
   dimensions = {
     InstanceId = try(aws_instance.this[0].id, "")
+    path       = "/"
   }
 }
 locals {
@@ -38,5 +39,6 @@ resource "aws_cloudwatch_metric_alarm" "ec2_additional_disk" {
   tags                = var.tags
   dimensions = {
     InstanceId = try(aws_instance.this[0].id, "")
+    path       = each.value.tags.mountpath
   }
 }
