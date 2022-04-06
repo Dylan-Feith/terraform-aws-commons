@@ -17,7 +17,7 @@ variable "policies_arn" {
   default     = []
 }
 # add additionnal ebs
-variable "additionnal_ebs_block_device" {
+variable "additional_ebs_block_device" {
   description = "Map that contains additional ebs block to attach"
   type        = any
   default     = {}

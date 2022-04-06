@@ -2,7 +2,7 @@ data "aws_kms_key" "ebs" {
   key_id = "alias/aws/ebs"
 }
 resource "aws_ebs_volume" "this" {
-  for_each          = var.additionnal_ebs_block_device
+  for_each          = var.additional_ebs_block_device
   availability_zone = try(aws_instance.this[0].availability_zone, "")
   size              = each.value.size
   iops              = try(each.value.iops, null)
@@ -18,7 +18,7 @@ resource "aws_ebs_volume" "this" {
   )
 }
 resource "aws_volume_attachment" "this" {
-  for_each    = var.additionnal_ebs_block_device
+  for_each    = var.additional_ebs_block_device
   device_name = each.value.device_name
   volume_id   = aws_ebs_volume.this[each.key].id
   instance_id = try(aws_instance.this[0].id, "")
