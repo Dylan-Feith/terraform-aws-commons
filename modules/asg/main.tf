@@ -132,8 +132,7 @@ resource "aws_launch_template" "this" {
   #  }
   #}
   iam_instance_profile {
-    name = try(aws_iam_instance_profile.this[0].name, "")
-    arn  = try(aws_iam_instance_profile.this[0].arn, "")
+    arn = try(aws_iam_instance_profile.this[0].arn, "")
   }
   #  end edit  #
 
