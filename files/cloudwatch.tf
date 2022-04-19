@@ -47,7 +47,7 @@ resource "aws_cloudwatch_dashboard" "main" {
 EOF
 }
 
-# Allow keenobi-hub to access to this cloudwatch
+# Allow keenobi-hub to access this cloudwatch
 variable "cloudwatch_cross_account_monitoring_id" {
   default = 115490118264
 }
