@@ -1,0 +1,3 @@
+- cleaning: rm -rf .git* .chglog CHANGELOG.md LICENSE Makefile .pre-commit-config.yaml
+- remove creation of security group and all related variables -> handled outside this module
+- do not encrypt in transit by default
