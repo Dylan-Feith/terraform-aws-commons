@@ -1246,7 +1246,7 @@ resource "aws_default_vpc" "this" {
 resource "aws_route" "private_nat_instance" {
   count                  = var.create_vpc && var.enable_nat_instance ? local.nat_gateway_count : 0
   route_table_id         = element(aws_route_table.private[*].id, count.index)
-  instance_id            = element(var.nat_instance_id, count.index)
+  network_interface_id   = element(var.nat_instance_id, count.index)
   destination_cidr_block = var.nat_instance_destination_cidr_block
   depends_on             = [aws_route_table.private]
 
@@ -1258,7 +1258,7 @@ resource "aws_route" "private_nat_instance" {
 resource "aws_route" "database_nat_instance" {
   count                  = var.create_vpc && var.create_database_subnet_route_table && length(var.database_subnets) > 0 && var.enable_nat_instance ? length(var.database_subnets) : 0
   route_table_id         = element(aws_route_table.database[*].id, count.index)
-  instance_id            = element(var.nat_instance_id, count.index)
+  network_interface_id   = element(var.nat_instance_id, count.index)
   destination_cidr_block = var.nat_instance_destination_cidr_block
   depends_on             = [aws_route_table.database]
 
