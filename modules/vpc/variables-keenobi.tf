@@ -10,8 +10,8 @@ variable "nat_instance_destination_cidr_block" {
   default     = "0.0.0.0/0"
 }
 
-variable "nat_instance_id" {
-  description = "A list of instance ID. Fist element will be to the first AZ, second, to the second, ..."
+variable "network_interface_id" {
+  description = "A list of network interface ID. Fist element will be to the first AZ, second, to the second, ..."
   type        = list(string)
   default     = []
 }
