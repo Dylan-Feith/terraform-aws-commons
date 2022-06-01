@@ -1,0 +1,2 @@
+- cleaning: rm -rf .git* CHANGELOG.md  LICENSE  test Makefile README.yaml 
+- rm context, and create variable "enabled", "name" and  "tags"
